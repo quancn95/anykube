@@ -1,0 +1,26 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: anykube
+  namespace: argocd
+  finalizers: # delete resources when delete argo App
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source: 
+    repoURL: https://github.com/quancn95/anykube.git
+    targetRevision: HEAD
+    path: environments/staging/2-app
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy: 
+    automated: # auto sync app with repo
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - Validation=true
+      - CreateNamespace=false
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
