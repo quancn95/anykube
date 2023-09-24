@@ -19,8 +19,9 @@ spec:
       containers:
         - name: nginx
           imagePullPolicy: Always
-          image: ntquan/nginx:v0.1.1
+          image: ntquan/nginx:v0.1.2
           ports:
             - containerPort: 80
+
       # imagePullSecrets:
       #   - name: dockerconfigjson
