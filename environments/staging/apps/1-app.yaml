@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: anykube
+  name: anykube-foo
   namespace: argocd
   finalizers: # delete resources when delete argo App
     - resources-finalizer.argocd.argoproj.io
